@@ -1,13 +1,17 @@
-@mixin horizontal-from($breakpoint) {
-  @media(min-width: $breakpoint) {
-    margin-left: 25%;
-    width: 50%;
+@mixin gravity-forms-styling-basic($args: ()) {
+  $settings: map-merge((
+    'horizontal':  640px,
+  ), $args);
+
+  $margin: 1rem;
+
+  @mixin horizontal-from-breakpoint() {
+    @media(min-width: map-get($settings, 'horizontal')) {
+      margin-left: 25%;
+      width: 50%;
+    }
   }
-}
 
-$margin: 1rem;
-
-.gform_wrapper {
   // Form layout
   .gform_body {
     float: left;
@@ -39,7 +43,7 @@ $margin: 1rem;
 
   // Field descriptions
   .gfield_description {
-    @include horizontal-from(641px);
+    @include horizontal-from-breakpoint();
     font-style: italic;
     font-size: 80%;
     margin-top: ($margin / 4);
@@ -63,7 +67,7 @@ $margin: 1rem;
   // Input types
   .ginput_container_checkbox,
   .ginput_container_radio {
-    @include horizontal-from(641px);
+    @include horizontal-from-breakpoint();
   }
 
   [type="checkbox"],

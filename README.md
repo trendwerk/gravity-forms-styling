@@ -1,2 +1,2 @@
-# gravity-forms-styling-basic
-Styling for basic fields from the Gravity Forms plugin
+# Gravity Forms styling
+Styling for the Gravity Forms plugin.
