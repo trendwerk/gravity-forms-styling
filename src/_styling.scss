@@ -3,19 +3,21 @@
 @mixin gravity-forms-styling($args: ()) {
   $settings: map-merge((
     'error-color': #CE4844,
-    'horizontal':  640px,
+    'field-width': 50%,
+    'horizontal':  641px,
+    'label-width': 25%,
   ), $args);
 
   @include gravity-forms-errors(map-get($settings, 'error-color'));
 
-  $margin: 1rem;
-
   @mixin horizontal-from-breakpoint() {
     @media(min-width: map-get($settings, 'horizontal')) {
-      margin-left: 25%;
-      width: 50%;
+      margin-left: map-get($settings, 'label-width');
+      width: map-get($settings, 'field-width');
     }
   }
+
+  $baseMargin: 1rem;
 
   // Form layout
   .gform_body {
