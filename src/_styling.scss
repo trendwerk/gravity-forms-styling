@@ -1,7 +1,12 @@
-@mixin gravity-forms-styling-basic($args: ()) {
+@import 'errors';
+
+@mixin gravity-forms-styling($args: ()) {
   $settings: map-merge((
+    'error-color': #CE4844,
     'horizontal':  640px,
   ), $args);
+
+  @include gravity-forms-errors(map-get($settings, 'error-color'));
 
   $margin: 1rem;
 
