@@ -1,0 +1,73 @@
+@mixin horizontal-from($breakpoint) {
+  @media(min-width: $breakpoint) {
+    margin-left: 25%;
+    width: 50%;
+  }
+}
+
+$margin: 1rem;
+
+.gform_wrapper {
+  // Form layout
+  .gform_body {
+    float: left;
+    margin-bottom: $margin;
+  }
+
+  // List styles
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    float: left;
+    margin-bottom: $margin;
+    width: 100%;
+
+    li {
+      margin-bottom: 0;
+
+      label {
+        display: inline;
+        float: none;
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  // Field descriptions
+  .gfield_description {
+    @include horizontal-from(641px);
+    font-style: italic;
+    font-size: 80%;
+    margin-top: ($margin / 4);
+  }
+
+  // Sections and titles
+  .gform_description,
+  .gfield_html {
+    display: block;
+    margin-bottom: ($margin * 2);
+  }
+
+  .gsection {
+    margin: $margin 0 ($margin * 2);
+  }
+
+  .gsection_title {
+    margin-bottom: 0;
+  }
+
+  // Input types
+  .ginput_container_checkbox,
+  .ginput_container_radio {
+    @include horizontal-from(641px);
+  }
+
+  [type="checkbox"],
+  [type="radio"] {
+    margin-right: 10px;
+  }
+}
