@@ -1,0 +1,67 @@
+@mixin gravity-forms-datepicker($args: ()) {
+  $settings: map-merge((
+    'primary-color': #337AB7,
+    'border-color': #DDD,
+  ), $args);
+
+  $margin: 1rem;
+
+  background: white;
+  border: 1px solid map-get($settings, 'border-color');
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.2);
+  padding: $margin;
+
+  // Header
+  .ui-datepicker-title {
+    margin-bottom: $margin;
+  }
+
+  .ui-datepicker-prev,
+  .ui-datepicker-next {
+    display: none;
+  }
+
+  select {
+    width: 100%;
+
+    &:first-child {
+      margin-bottom: .5rem;
+    }
+  }
+
+  // Table
+  table {
+    font-size: 80%;
+    margin-bottom: 0;
+    line-height: normal;
+  }
+
+  th,
+  td {
+    padding: 10px;
+  }
+
+  a,
+  a:hover {
+    text-decoration: none;
+  }
+
+  td {
+    cursor: default;
+    padding: 10px;
+    text-align: center;
+  }
+
+  td:not(.ui-datepicker-unselectable) {
+    cursor: pointer;
+
+    &.ui-datepicker-current-day,
+    &:hover {
+      background: map-get($settings, 'primary-color');
+        
+      a {
+        color: white;
+      }
+    }
+  }
+}
