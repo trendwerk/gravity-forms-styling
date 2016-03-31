@@ -1,12 +1,12 @@
 @mixin gravity-forms-styling($args: ()) {
   $settings: map-merge((
-    'error-color': #CE4844,
+    'error-color': #ce4844,
     'field-width': 50%,
     'horizontal-layout': 641px,
     'label-width': 25%,
     'datepicker': false,
-    'datepicker-primary-color': #337AB7,
-    'datepicker-border-color': #DDD,
+    'datepicker-primary-color': #337ab7,
+    'datepicker-border-color': #ddd,
   ), $args);
 
   @mixin horizontal-from-breakpoint() {
@@ -17,6 +17,7 @@
   }
 
   $margin: 1rem;
+  $white: #fff;
 
   /**
    * 1. Base
@@ -53,8 +54,8 @@
     // Field descriptions
     .gfield_description {
       @include horizontal-from-breakpoint();
-      font-style: italic;
       font-size: 80%;
+      font-style: italic;
       margin-top: ($margin / 4);
     }
 
@@ -91,9 +92,9 @@
 
     .validation_error {
       background: $color;
+      color: $white;
       margin-bottom: 2rem;
-      padding: .5rem 1.5rem;
-      color: white;
+      padding: 0.5rem 1.5rem;
     }
 
     .gfield_error {
@@ -121,10 +122,12 @@
    * 3. Datepicker
    */
   @if map-get($settings, 'datepicker') {
+    $shadow: rgba(0, 0, 0, 0.2);
+
     .ui-datepicker {
-      background: white;
+      background: $white;
       border: 1px solid map-get($settings, 'datepicker-border-color');
-      box-shadow: 0 0 50px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 0 50px $shadow;
       padding: $margin;
 
       // Header
@@ -141,15 +144,15 @@
         width: 100%;
 
         &:first-child {
-          margin-bottom: .5rem;
+          margin-bottom: 0.5rem;
         }
       }
 
       // Table
       table {
         font-size: 80%;
-        margin-bottom: 0;
         line-height: normal;
+        margin-bottom: 0;
       }
 
       th,
@@ -177,9 +180,9 @@
         &.ui-datepicker-current-day,
         &:hover {
           background: map-get($settings, 'datepicker-primary-color');
-            
+
           a {
-            color: white;
+            color: $white;
           }
         }
       }
