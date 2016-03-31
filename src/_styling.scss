@@ -1,17 +1,16 @@
-@import 'errors';
-
 @mixin gravity-forms-styling($args: ()) {
   $settings: map-merge((
     'error-color': #CE4844,
     'field-width': 50%,
-    'horizontal':  641px,
+    'horizontal-layout': 641px,
     'label-width': 25%,
+    'datepicker': false,
+    'datepicker-primary-color': #337AB7,
+    'datepicker-border-color': #DDD,
   ), $args);
 
-  @include gravity-forms-errors(map-get($settings, 'error-color'));
-
   @mixin horizontal-from-breakpoint() {
-    @media(min-width: map-get($settings, 'horizontal')) {
+    @media(min-width: map-get($settings, 'horizontal-layout')) {
       margin-left: map-get($settings, 'label-width');
       width: map-get($settings, 'field-width');
     }
@@ -19,66 +18,171 @@
 
   $margin: 1rem;
 
-  // Form layout
-  .gform_body {
-    float: left;
-    margin-bottom: $margin;
-  }
+  /**
+   * 1. Base
+   */
+  .gform_wrapper {
+    .gform_body {
+      float: left;
+      margin-bottom: $margin;
+    }
 
-  // List styles
-  ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-
-  li {
-    float: left;
-    margin-bottom: $margin;
-    width: 100%;
+    // List styles
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
 
     li {
-      margin-bottom: 0;
+      float: left;
+      margin-bottom: $margin;
+      width: 100%;
 
-      label {
-        display: inline;
-        float: none;
+      li {
         margin-bottom: 0;
+
+        label {
+          display: inline;
+          float: none;
+          margin-bottom: 0;
+        }
       }
+    }
+
+    // Field descriptions
+    .gfield_description {
+      @include horizontal-from-breakpoint();
+      font-style: italic;
+      font-size: 80%;
+      margin-top: ($margin / 4);
+    }
+
+    // Sections and titles
+    .gform_description,
+    .gfield_html {
+      display: block;
+      margin-bottom: ($margin * 2);
+    }
+
+    .gsection {
+      margin: $margin 0 ($margin * 2);
+    }
+
+    .gsection_title {
+      margin-bottom: 0;
+    }
+
+    // Input types
+    .ginput_container_checkbox,
+    .ginput_container_radio {
+      @include horizontal-from-breakpoint();
+    }
+
+    [type="checkbox"],
+    [type="radio"] {
+      margin-right: 10px;
+    }
+
+    /**
+     * 2. Errors
+     */
+    $color: map-get($settings, 'error-color');
+
+    .validation_error {
+      background: $color;
+      margin-bottom: 2rem;
+      padding: .5rem 1.5rem;
+      color: white;
+    }
+
+    .gfield_error {
+      label {
+        color: $color;
+      }
+
+      li label {
+        color: inherit;
+      }
+
+      input,
+      select,
+      textarea {
+        border-color: $color;
+      }
+    }
+
+    .validation_message {
+      display: none;
     }
   }
 
-  // Field descriptions
-  .gfield_description {
-    @include horizontal-from-breakpoint();
-    font-style: italic;
-    font-size: 80%;
-    margin-top: ($margin / 4);
-  }
+  /**
+   * 3. Datepicker
+   */
+  @if map-get($settings, 'datepicker') {
+    .ui-datepicker {
+      background: white;
+      border: 1px solid map-get($settings, 'datepicker-border-color');
+      box-shadow: 0 0 50px rgba(0, 0, 0, 0.2);
+      padding: $margin;
 
-  // Sections and titles
-  .gform_description,
-  .gfield_html {
-    display: block;
-    margin-bottom: ($margin * 2);
-  }
+      // Header
+      .ui-datepicker-title {
+        margin-bottom: $margin;
+      }
 
-  .gsection {
-    margin: $margin 0 ($margin * 2);
-  }
+      .ui-datepicker-prev,
+      .ui-datepicker-next {
+        display: none;
+      }
 
-  .gsection_title {
-    margin-bottom: 0;
-  }
+      select {
+        width: 100%;
 
-  // Input types
-  .ginput_container_checkbox,
-  .ginput_container_radio {
-    @include horizontal-from-breakpoint();
-  }
+        &:first-child {
+          margin-bottom: .5rem;
+        }
+      }
 
-  [type="checkbox"],
-  [type="radio"] {
-    margin-right: 10px;
+      // Table
+      table {
+        font-size: 80%;
+        margin-bottom: 0;
+        line-height: normal;
+      }
+
+      th,
+      td {
+        padding: 8px;
+
+        @media(min-width: 341px) {
+          padding: 10px;
+        }
+      }
+
+      a,
+      a:hover {
+        text-decoration: none;
+      }
+
+      td {
+        cursor: default;
+        text-align: center;
+      }
+
+      td:not(.ui-datepicker-unselectable) {
+        cursor: pointer;
+
+        &.ui-datepicker-current-day,
+        &:hover {
+          background: map-get($settings, 'datepicker-primary-color');
+            
+          a {
+            color: white;
+          }
+        }
+      }
+    }
   }
 }
