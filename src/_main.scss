@@ -1,3 +1,6 @@
+@import 'components/error';
+@import 'components/file-upload';
+
 @mixin gravity-forms-styling($args: ()) {
   $settings: map-merge((
     'datepicker': false,
@@ -9,25 +12,31 @@
     'label-width': 30%,
   ), $args);
 
-  @mixin horizontal-from-breakpoint() {
+  /**
+   * Helper mixin
+   */
+  @mixin _horizontal-from-breakpoint() {
     @media(min-width: map-get($settings, 'horizontal-layout')) {
       float: right;
       width: map-get($settings, 'field-width');
     }
   }
 
-  $white: #fff;
-
   /**
-   * 1. Base
+   * Global Gravity Forms class
    */
   .gform_wrapper {
+    @include _error(map-get($settings, 'error-color'), map-get($settings, 'error-bordered'));
+    @include _file-upload(map-get($settings, 'horizontal-layout'));
+
     .gform_body {
       float: left;
       margin-bottom: 1rem;
     }
 
-    // List styles
+    /**
+     * Main list styles
+     */
     ul {
       list-style: none;
       margin: 0;
@@ -51,6 +60,9 @@
       }
     }
 
+    /**
+     * Label & container
+     */
     .gfield_label {
       display: block;
       margin-bottom: 5px;
@@ -63,23 +75,30 @@
       }
     }
 
-    .ginput_container > input,
-    .ginput_container > textarea,
-    .ginput_container > select {
-      @include horizontal-from-breakpoint();
-      display: block;
-      width: 100%;
+    .ginput_container {
+      @include _horizontal-from-breakpoint();
+
+      > input,
+      > textarea,
+      > select {
+        display: block;
+        width: 100%;
+      }
     }
 
-    // Field descriptions
+    /**
+     * Field descriptions
+     */
     .gfield_description {
-      @include horizontal-from-breakpoint();
+      @include _horizontal-from-breakpoint();
       font-size: 80%;
       font-style: italic;
       margin-top: 0.25rem;
     }
 
-    // Sections and titles
+    /**
+     * Sections and titles
+     */
     .gform_description,
     .gfield_html {
       display: block;
@@ -94,84 +113,24 @@
       margin-bottom: 0;
     }
 
-    // Input types
+    /**
+     * Input types
+     */
     .ginput_container_checkbox,
     .ginput_container_radio {
-      @include horizontal-from-breakpoint();
+      @include _horizontal-from-breakpoint();
     }
 
     [type="checkbox"],
     [type="radio"] {
       margin-right: 10px;
     }
-
-    /**
-     * 2. Errors
-     */
-    $color: map-get($settings, 'error-color');
-
-    .validation_error {
-      margin-bottom: 2rem;
-      padding: 0.5rem 1.5rem;
-
-      @if map-get($settings, 'error-bordered') {
-        border: 1px solid $color;
-        color: $color;
-      } @else {
-        background: $color;
-        color: $white;
-      }
-    }
-
-    .gfield_error {
-      label {
-        color: $color;
-      }
-
-      li label {
-        color: inherit;
-      }
-
-      input,
-      select,
-      textarea {
-        border-color: $color;
-      }
-    }
-
-    .validation_message {
-      display: none;
-    }
-
-    /**
-     * 3. File upload
-     */
-    $border: rgba(0, 0, 0, 0.1);
-
-    .gform_drop_area {
-      @include horizontal-from-breakpoint();
-      border: 2px dashed $border;
-      padding: 1rem;
-      text-align: center;
-
-      input {
-        display: block;
-        margin: 5px auto 0;
-
-        @media(min-width: map-get($settings, 'horizontal-layout')) {
-          display: inline;
-          margin: 0 0 0 10px;
-        }
-      }
-    }
   }
 
-  /**
-   * 4. Datepicker
-   */
   @if map-get($settings, 'datepicker') {
     $border: #ddd;
     $shadow: rgba(0, 0, 0, 0.2);
+    $white: #fff;
 
     .ui-datepicker {
       background: $white;
@@ -179,7 +138,9 @@
       box-shadow: 0 0 50px $shadow;
       padding: 1rem;
 
-      // Header
+      /**
+       * Header
+       */
       .ui-datepicker-title {
         margin-bottom: 1rem;
       }
@@ -197,7 +158,9 @@
         }
       }
 
-      // Table
+      /**
+       * table
+       */
       table {
         font-size: 80%;
         line-height: normal;

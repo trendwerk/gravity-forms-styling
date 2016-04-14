@@ -1,0 +1,19 @@
+@mixin _file-upload($breakpoint) {
+  $border: rgba(0, 0, 0, 0.1);
+
+  .gform_drop_area {
+    border: 2px dashed $border;
+    padding: 1rem;
+    text-align: center;
+
+    input {
+      display: block;
+      margin: 5px auto 0;
+
+      @media(min-width: $breakpoint) {
+        display: inline;
+        margin: 0 0 0 10px;
+      }
+    }
+  }
+}
