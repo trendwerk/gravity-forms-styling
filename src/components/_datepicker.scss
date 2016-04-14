@@ -1,0 +1,73 @@
+@mixin _datepicker($color) {
+  $border: #ccc;
+  $shadow: rgba(0, 0, 0, 0.2);
+  $white: #fff;
+
+  .ui-datepicker {
+    background: $white;
+    border: 1px solid $border;
+    box-shadow: 0 0 50px $shadow;
+    padding: 1rem;
+
+    /**
+     * Header
+     */
+    .ui-datepicker-title {
+      margin-bottom: 1rem;
+    }
+
+    .ui-datepicker-prev,
+    .ui-datepicker-next {
+      display: none;
+    }
+
+    select {
+      width: 100%;
+
+      &:first-child {
+        margin-bottom: 0.5rem;
+      }
+    }
+
+    /**
+     * table
+     */
+    table {
+      font-size: 80%;
+      line-height: normal;
+      margin-bottom: 0;
+    }
+
+    th,
+    td {
+      padding: 8px;
+
+      @media(min-width: 341px) {
+        padding: 10px;
+      }
+    }
+
+    a,
+    a:hover {
+      text-decoration: none;
+    }
+
+    td {
+      cursor: default;
+      text-align: center;
+    }
+
+    td:not(.ui-datepicker-unselectable) {
+      cursor: pointer;
+
+      &.ui-datepicker-current-day,
+      &:hover {
+        background: $color;
+
+        a {
+          color: $white;
+        }
+      }
+    }
+  }
+}
