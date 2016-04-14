@@ -1,8 +1,8 @@
 @mixin gravity-forms-styling($args: ()) {
   $settings: map-merge((
     'datepicker': false,
-    'datepicker-primary-color': #337ab7,
     'datepicker-border-color': #ddd,
+    'datepicker-primary-color': #337ab7,
     'error-color': #ce4844,
     'field-width': 70%,
     'horizontal-layout': 641px,

@@ -18,13 +18,13 @@ You can extend the base styles to support Gravity Forms features like datepicker
 ### API
 ```scss
 @include gravity-forms-styling((
-  'error-color': #CE4844,
-  'horizontal-layout': 641px,
-  'label-width': 25%,
-  'field-width': 50%,
   'datepicker': false,
-  'datepicker-primary-color': #337AB7,
-  'datepicker-border-color': #DDD,
+  'datepicker-border-color': #ddd,
+  'datepicker-primary-color': #337ab7,
+  'error-color': #ce4844,
+  'field-width': 70%,
+  'horizontal-layout': 641px,
+  'label-width': 30%,
 ));
 ```
 
