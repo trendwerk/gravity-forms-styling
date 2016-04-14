@@ -1,7 +1,6 @@
 @mixin gravity-forms-styling($args: ()) {
   $settings: map-merge((
     'datepicker': false,
-    'datepicker-border-color': #ddd,
     'datepicker-primary-color': #337ab7,
     'error-bordered': false,
     'error-color': #ce4844,
@@ -17,7 +16,6 @@
     }
   }
 
-  $margin: 1rem;
   $white: #fff;
 
   /**
@@ -26,7 +24,7 @@
   .gform_wrapper {
     .gform_body {
       float: left;
-      margin-bottom: $margin;
+      margin-bottom: 1rem;
     }
 
     // List styles
@@ -38,7 +36,7 @@
 
     li {
       float: left;
-      margin-bottom: $margin;
+      margin-bottom: 1rem;
       width: 100%;
 
       // Checkboxes / radio buttons
@@ -78,18 +76,18 @@
       @include horizontal-from-breakpoint();
       font-size: 80%;
       font-style: italic;
-      margin-top: ($margin / 4);
+      margin-top: 0.25rem;
     }
 
     // Sections and titles
     .gform_description,
     .gfield_html {
       display: block;
-      margin-bottom: ($margin * 2);
+      margin-bottom: 2rem;
     }
 
     .gsection {
-      margin: $margin 0 ($margin * 2);
+      margin: 1rem 0 2rem;
     }
 
     .gsection_title {
@@ -148,10 +146,12 @@
     /**
      * 3. File upload
      */
+    $border: rgba(0, 0, 0, 0.1);
+
     .gform_drop_area {
       @include horizontal-from-breakpoint();
-      border: 2px dashed rgba(0, 0, 0, 0.1);
-      padding: $margin;
+      border: 2px dashed $border;
+      padding: 1rem;
       text-align: center;
 
       input {
@@ -170,17 +170,18 @@
    * 4. Datepicker
    */
   @if map-get($settings, 'datepicker') {
+    $border: #ddd;
     $shadow: rgba(0, 0, 0, 0.2);
 
     .ui-datepicker {
       background: $white;
-      border: 1px solid map-get($settings, 'datepicker-border-color');
+      border: 1px solid $border;
       box-shadow: 0 0 50px $shadow;
-      padding: $margin;
+      padding: 1rem;
 
       // Header
       .ui-datepicker-title {
-        margin-bottom: $margin;
+        margin-bottom: 1rem;
       }
 
       .ui-datepicker-prev,
