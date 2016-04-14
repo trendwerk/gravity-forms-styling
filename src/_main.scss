@@ -12,7 +12,7 @@
 
   @mixin horizontal-from-breakpoint() {
     @media(min-width: map-get($settings, 'horizontal-layout')) {
-      margin-left: map-get($settings, 'label-width');
+      float: right;
       width: map-get($settings, 'field-width');
     }
   }
@@ -69,6 +69,7 @@
     .ginput_container > textarea,
     .ginput_container > select {
       @include horizontal-from-breakpoint();
+      display: block;
       width: 100%;
     }
 
@@ -143,10 +144,30 @@
     .validation_message {
       display: none;
     }
+
+    /**
+     * 3. File upload
+     */
+    .gform_drop_area {
+      @include horizontal-from-breakpoint();
+      border: 2px dashed rgba(0, 0, 0, 0.1);
+      padding: $margin;
+      text-align: center;
+
+      input {
+        display: block;
+        margin: 5px auto 0;
+
+        @media(min-width: map-get($settings, 'horizontal-layout')) {
+          display: inline;
+          margin: 0 0 0 10px;
+        }
+      }
+    }
   }
 
   /**
-   * 3. Datepicker
+   * 4. Datepicker
    */
   @if map-get($settings, 'datepicker') {
     $shadow: rgba(0, 0, 0, 0.2);
