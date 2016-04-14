@@ -4,9 +4,9 @@
     'datepicker-primary-color': #337ab7,
     'datepicker-border-color': #ddd,
     'error-color': #ce4844,
-    'field-width': 50%,
+    'field-width': 70%,
     'horizontal-layout': 641px,
-    'label-width': 25%,
+    'label-width': 30%,
   ), $args);
 
   @mixin horizontal-from-breakpoint() {
