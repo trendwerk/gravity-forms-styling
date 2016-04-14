@@ -3,6 +3,7 @@
     'datepicker': false,
     'datepicker-border-color': #ddd,
     'datepicker-primary-color': #337ab7,
+    'error-bordered': false,
     'error-color': #ce4844,
     'field-width': 70%,
     'horizontal-layout': 641px,
@@ -111,10 +112,16 @@
     $color: map-get($settings, 'error-color');
 
     .validation_error {
-      background: $color;
-      color: $white;
       margin-bottom: 2rem;
       padding: 0.5rem 1.5rem;
+
+      @if map-get($settings, 'error-bordered') {
+        border: 1px solid $color;
+        color: $color;
+      } @else {
+        background: $color;
+        color: $white;
+      }
     }
 
     .gfield_error {

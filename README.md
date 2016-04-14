@@ -21,6 +21,7 @@ You can extend the base styles to support Gravity Forms features like datepicker
   'datepicker': false,
   'datepicker-border-color': #ddd,
   'datepicker-primary-color': #337ab7,
+  'error-bordered': false,
   'error-color': #ce4844,
   'field-width': 70%,
   'horizontal-layout': 641px,
@@ -28,7 +29,10 @@ You can extend the base styles to support Gravity Forms features like datepicker
 ));
 ```
 
-#### Error color
+#### Error: bordered
+Specify if the main error should have a border. When set to `false`, the background color is set to `error-color` and the text color is set to white.
+
+#### Error: color
 The color that's used for error messages and highlighting fields with errors.
 
 #### Horizontal layout
