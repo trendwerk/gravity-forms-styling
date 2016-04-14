@@ -16,4 +16,16 @@
       }
     }
   }
+
+  .ginput_preview {
+    font-size: 80%;
+    text-transform: lowercase;
+
+    img {
+      cursor: pointer;
+      display: inline-block;
+      margin-right: 2px;
+      vertical-align: middle;
+    }
+  }
 }
