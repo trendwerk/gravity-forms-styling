@@ -1,14 +1,4 @@
-@mixin gfs-main($horizontal-layout, $field-width, $label-width) {
-  /**
-   * Helper mixin
-   */
-  @mixin _horizontal-from-breakpoint() {
-    @media(min-width: $horizontal-layout) {
-      float: right;
-      width: $field-width;
-    }
-  }
-
+@mixin gfs-main($breakpoint, $field-width, $label-width) {
   .gform_body {
     float: left;
     margin-bottom: 1rem;
@@ -47,7 +37,7 @@
     display: block;
     margin-bottom: 5px;
 
-    @media(min-width: $horizontal-layout) {
+    @media(min-width: $breakpoint) {
       float: left;
       margin-bottom: 0;
       padding-right: 20px;
@@ -56,7 +46,10 @@
   }
 
   .ginput_container {
-    @include _horizontal-from-breakpoint();
+    @media(min-width: $breakpoint) {
+      float: left;
+      width: $field-width;
+    }
 
     > input,
     > textarea,
@@ -69,7 +62,11 @@
    * Field descriptions / validation messages
    */
   .gfield_description {
-    @include _horizontal-from-breakpoint();
+    @media(min-width: $breakpoint) {
+      float: left;
+      margin-left: $label-width;
+      width: $field-width;
+    }
   }
 
   // Hide explicit validation messages after form comes back from submission attempt
@@ -111,7 +108,10 @@
    */
   .ginput_container_checkbox,
   .ginput_container_radio {
-    @include _horizontal-from-breakpoint();
+    @media(min-width: $breakpoint) {
+      float: left;
+      width: $field-width;
+    }
   }
 
   [type="checkbox"],
@@ -125,7 +125,7 @@
   .gform_button {
     margin: 0;
 
-    @media(min-width: $horizontal-layout) {
+    @media(min-width: $breakpoint) {
       margin-left: $label-width;
     }
   }

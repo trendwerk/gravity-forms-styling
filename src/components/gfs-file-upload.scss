@@ -1,25 +1,33 @@
-@mixin gfs-file-upload($breakpoint) {
+@mixin gfs-file-upload($breakpoint, $label-width) {
   $border: rgba(0, 0, 0, 0.1);
 
   .gform_drop_area {
     border: 2px dashed $border;
     padding: 1rem;
     text-align: center;
+  }
 
-    input {
-      display: block;
-      margin: 5px auto 0;
+  .gform_drop_instructions {
+    display: inline-block;
+    margin: 0 10px 5px;
+  }
 
-      @media(min-width: $breakpoint) {
-        display: inline;
-        margin: 0 0 0 10px;
-      }
-    }
+  .gform_button_select_files {
+    margin: 0;
+  }
+
+  [type="file"] {
+    font-size: 1rem;
   }
 
   .ginput_preview {
+    float: left;
     font-size: 80%;
     text-transform: lowercase;
+
+    @media(min-width: $breakpoint) {
+      margin-left: $label-width;
+    }
 
     img {
       cursor: pointer;
@@ -29,7 +37,15 @@
     }
   }
 
-  [type="file"] {
-    font-size: 1rem;
+  // Don't indent previews when they are already in the container
+  .ginput_container .ginput_preview {
+    @media(min-width: $breakpoint) {
+      margin-left: 0;
+    }
+  }
+
+  // Hide buggy shim which is causing scrollbars in some cases
+  .moxie-shim {
+    display: none;
   }
 }

@@ -20,7 +20,7 @@
     @include gfs-main(map-get($settings, 'horizontal-layout'), map-get($settings, 'field-width'), map-get($settings, 'label-width'));
 
     @if map-get($settings, 'file-upload') {
-      @include gfs-file-upload(map-get($settings, 'horizontal-layout'));
+      @include gfs-file-upload(map-get($settings, 'horizontal-layout'), map-get($settings, 'label-width'));
     }
   }
 
