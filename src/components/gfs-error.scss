@@ -1,4 +1,4 @@
-@mixin _error($color, $bordered) {
+@mixin gfs-error($color, $bordered) {
   .validation_error {
     margin-bottom: 2rem;
     padding: 0.5rem 1.5rem;

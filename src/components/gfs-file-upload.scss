@@ -1,4 +1,4 @@
-@mixin _file-upload($breakpoint) {
+@mixin gfs-file-upload($breakpoint) {
   $border: rgba(0, 0, 0, 0.1);
 
   .gform_drop_area {

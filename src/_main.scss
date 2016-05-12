@@ -10,14 +10,18 @@
     'error-bordered': false,
     'error-color': #ce4844,
     'field-width': 70%,
+    'file-upload': false,
     'horizontal-layout': 641px,
     'label-width': 30%,
   ), $args);
 
   .gform_wrapper {
     @include gfs-error(map-get($settings, 'error-color'), map-get($settings, 'error-bordered'));
-    @include gfs-file-upload(map-get($settings, 'horizontal-layout'));
     @include gfs-main(map-get($settings, 'horizontal-layout'), map-get($settings, 'field-width'), map-get($settings, 'label-width'));
+
+    @if map-get($settings, 'file-upload') {
+      @include gfs-file-upload(map-get($settings, 'horizontal-layout'));
+    }
   }
 
   @if map-get($settings, 'datepicker') {
