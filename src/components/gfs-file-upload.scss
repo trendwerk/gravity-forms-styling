@@ -33,20 +33,21 @@
     @media(min-width: $breakpoint) {
       margin-left: $label-width;
     }
-
-    img {
-      cursor: pointer;
-      display: inline-block;
-      margin-right: 2px;
-      vertical-align: middle;
-    }
   }
 
-  // Don't indent previews when they are already in the container
+  // Don't indent file previews when they are already in the container
   .ginput_container .ginput_preview {
     @media(min-width: $breakpoint) {
       margin-left: 0;
     }
+  }
+
+  // Remove file icon
+  .ginput_preview img {
+    cursor: pointer;
+    display: inline-block;
+    margin-right: 2px;
+    vertical-align: middle;
   }
 
   // Hide buggy shim which is causing scrollbars in some cases
