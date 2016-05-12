@@ -1,4 +1,4 @@
-@mixin gfs-error($color, $bordered) {
+@mixin gfs-error($bordered, $color, $file-upload) {
   .validation_error {
     margin-bottom: 2rem;
     padding: 0.5rem 1.5rem;
@@ -25,6 +25,12 @@
     select,
     textarea {
       border-color: $color;
+    }
+
+    @if $file-upload {
+      .gform_drop_area {
+        border-color: $color;
+      }
     }
   }
 

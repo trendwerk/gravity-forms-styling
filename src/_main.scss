@@ -16,7 +16,7 @@
   ), $args);
 
   .gform_wrapper {
-    @include gfs-error(map-get($settings, 'error-color'), map-get($settings, 'error-bordered'));
+    @include gfs-error(map-get($settings, 'error-bordered'), map-get($settings, 'error-color'), map-get($settings, 'file-upload'));
     @include gfs-main(map-get($settings, 'horizontal-layout'), map-get($settings, 'field-width'), map-get($settings, 'label-width'));
 
     @if map-get($settings, 'file-upload') {
