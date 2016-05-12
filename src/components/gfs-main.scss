@@ -66,10 +66,24 @@
   }
 
   /**
-   * Field descriptions
+   * Field descriptions / validation messages
    */
   .gfield_description {
     @include _horizontal-from-breakpoint();
+  }
+
+  // Hide explicit validation messages after form comes back from submission attempt
+  .validation_message {
+    display: none;
+  }
+
+  // Don't hide realtime validation messages
+  .ginput_container .validation_message {
+    display: block;
+  }
+
+  .gfield_description,
+  .validation_message li {
     font-size: 80%;
     font-style: italic;
     margin-top: 0.25rem;
@@ -103,5 +117,16 @@
   [type="checkbox"],
   [type="radio"] {
     margin-right: 10px;
+  }
+
+  /**
+   * Buttons
+   */
+  .gform_button {
+    margin: 0;
+
+    @media(min-width: $horizontal-layout) {
+      margin-left: $label-width;
+    }
   }
 }
