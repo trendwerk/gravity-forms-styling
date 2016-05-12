@@ -1,0 +1,107 @@
+@mixin gfs-main($horizontal-layout, $field-width, $label-width) {
+  /**
+   * Helper mixin
+   */
+  @mixin _horizontal-from-breakpoint() {
+    @media(min-width: $horizontal-layout) {
+      float: right;
+      width: $field-width;
+    }
+  }
+
+  .gform_body {
+    float: left;
+    margin-bottom: 1rem;
+  }
+
+  /**
+   * Main list styles
+   */
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    float: left;
+    margin-bottom: 1rem;
+    width: 100%;
+
+    // Checkboxes / radio buttons
+    li {
+      margin-bottom: 0;
+
+      label {
+        display: inline;
+        float: none;
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  /**
+   * Label & container
+   */
+  .gfield_label {
+    display: block;
+    margin-bottom: 5px;
+
+    @media(min-width: $horizontal-layout) {
+      float: left;
+      margin-bottom: 0;
+      padding-right: 20px;
+      width: $label-width;
+    }
+  }
+
+  .ginput_container {
+    @include _horizontal-from-breakpoint();
+
+    > input,
+    > textarea,
+    > select {
+      width: 100%;
+    }
+  }
+
+  /**
+   * Field descriptions
+   */
+  .gfield_description {
+    @include _horizontal-from-breakpoint();
+    font-size: 80%;
+    font-style: italic;
+    margin-top: 0.25rem;
+  }
+
+  /**
+   * Sections and titles
+   */
+  .gform_description,
+  .gfield_html {
+    display: block;
+    margin-bottom: 2rem;
+  }
+
+  .gsection {
+    margin: 1rem 0 2rem;
+  }
+
+  .gsection_title {
+    margin-bottom: 0;
+  }
+
+  /**
+   * Input types
+   */
+  .ginput_container_checkbox,
+  .ginput_container_radio {
+    @include _horizontal-from-breakpoint();
+  }
+
+  [type="checkbox"],
+  [type="radio"] {
+    margin-right: 10px;
+  }
+}

@@ -1,6 +1,7 @@
-@import 'components/datepicker';
-@import 'components/error';
-@import 'components/file-upload';
+@import 'components/gfs-datepicker';
+@import 'components/gfs-error';
+@import 'components/gfs-file-upload';
+@import 'components/gfs-main';
 
 @mixin gravity-forms-styling($args: ()) {
   $settings: map-merge((
@@ -13,124 +14,13 @@
     'label-width': 30%,
   ), $args);
 
-  /**
-   * Helper mixin
-   */
-  @mixin _horizontal-from-breakpoint() {
-    @media(min-width: map-get($settings, 'horizontal-layout')) {
-      float: right;
-      width: map-get($settings, 'field-width');
-    }
-  }
-
-  /**
-   * Global Gravity Forms class
-   */
   .gform_wrapper {
-    @include _error(map-get($settings, 'error-color'), map-get($settings, 'error-bordered'));
-    @include _file-upload(map-get($settings, 'horizontal-layout'));
-
-    .gform_body {
-      float: left;
-      margin-bottom: 1rem;
-    }
-
-    /**
-     * Main list styles
-     */
-    ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-    }
-
-    li {
-      float: left;
-      margin-bottom: 1rem;
-      width: 100%;
-
-      // Checkboxes / radio buttons
-      li {
-        margin-bottom: 0;
-
-        label {
-          display: inline;
-          float: none;
-          margin-bottom: 0;
-        }
-      }
-    }
-
-    /**
-     * Label & container
-     */
-    .gfield_label {
-      display: block;
-      margin-bottom: 5px;
-
-      @media(min-width: map-get($settings, 'horizontal-layout')) {
-        float: left;
-        margin-bottom: 0;
-        padding-right: 20px;
-        width: map-get($settings, 'label-width');
-      }
-    }
-
-    .ginput_container {
-      @include _horizontal-from-breakpoint();
-
-      > input,
-      > textarea,
-      > select {
-        width: 100%;
-      }
-    }
-
-    /**
-     * Field descriptions
-     */
-    .gfield_description {
-      @include _horizontal-from-breakpoint();
-      font-size: 80%;
-      font-style: italic;
-      margin-top: 0.25rem;
-    }
-
-    /**
-     * Sections and titles
-     */
-    .gform_description,
-    .gfield_html {
-      display: block;
-      margin-bottom: 2rem;
-    }
-
-    .gsection {
-      margin: 1rem 0 2rem;
-    }
-
-    .gsection_title {
-      margin-bottom: 0;
-    }
-
-    /**
-     * Input types
-     */
-    .ginput_container_checkbox,
-    .ginput_container_radio {
-      @include _horizontal-from-breakpoint();
-    }
-
-    [type="checkbox"],
-    [type="radio"] {
-      margin-right: 10px;
-    }
+    @include gfs-error(map-get($settings, 'error-color'), map-get($settings, 'error-bordered'));
+    @include gfs-file-upload(map-get($settings, 'horizontal-layout'));
+    @include gfs-main(map-get($settings, 'horizontal-layout'), map-get($settings, 'field-width'), map-get($settings, 'label-width'));
   }
 
-  /**
-   * Datepicker
-   */
   @if map-get($settings, 'datepicker') {
-    @include _datepicker(map-get($settings, 'datepicker-primary-color'));
+    @include gfs-datepicker(map-get($settings, 'datepicker-primary-color'));
   }
 }
