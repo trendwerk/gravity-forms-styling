@@ -1,4 +1,4 @@
-@mixin gfs-datepicker($color) {
+@mixin _gfs-datepicker($color) {
   $border: #ccc;
   $shadow: rgba(0, 0, 0, 0.2);
   $white: #fff;
@@ -30,7 +30,7 @@
     }
 
     /**
-     * table
+     * Table
      */
     table {
       font-size: 80%;

@@ -1,4 +1,4 @@
-@mixin gfs-file-upload($breakpoint, $label-width) {
+@mixin _gfs-file-upload($breakpoint, $label-width) {
   $border: rgba(0, 0, 0, 0.1);
 
   .gform_drop_area {
