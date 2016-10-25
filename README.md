@@ -3,7 +3,7 @@ Styling for the Gravity Forms plugin.
 
 ## Install
 ```sh
-bower install trendwerk/gravity-forms-styling#~0.1.0 --save
+bower install trendwerk/gravity-forms-styling --save
 ```
 
 ## Usage
