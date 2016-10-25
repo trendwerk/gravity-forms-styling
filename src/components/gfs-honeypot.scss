@@ -1,0 +1,6 @@
+@mixin _gfs-honeypot() {
+  // Anti-spam honeypot
+  .gform_validation_container {
+    display: none;
+  }
+}

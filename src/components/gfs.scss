@@ -10,6 +10,8 @@
     'label-width': 30%,
   ), $args);
 
+  @include _gfs-honeypot();
+
   @if map-get($settings, 'datepicker') {
     @include _gfs-datepicker(map-get($settings, 'datepicker-primary-color'));
   }
