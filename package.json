@@ -1,4 +1,6 @@
 {
+  "name": "gravity-forms-styling",
+  "version": "0.2.0",
   "devDependencies": {
     "beepbeep": "^1.2.0",
     "gulp": "^3.9.1",
